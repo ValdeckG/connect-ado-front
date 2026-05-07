@@ -1,12 +1,11 @@
 import { Typography, Grid, Card, CardContent, AspectRatio, Button, Stack, LinearProgress } from "@mui/joy";
-import { Home, Camera, Heart, BookOpen, MessageSquare } from "lucide-react"; // Ícones lúdicos
+import { Home, Camera, Heart, BookOpen, MessageSquare } from "lucide-react";
 
 export default function HomeAdopter() {
     return (
         <div className="container" style={{ alignItems: 'flex-start', paddingTop: '40px' }}>
             <div className="home-content" style={{ width: '100%', maxWidth: '1000px', margin: '0 auto' }}>
 
-                {/* Boas-vindas */}
                 <header style={{ marginBottom: '32px' }}>
                     <Typography level="h2">Olá, Família Silva!</Typography>
                     <Typography level="body-lg">Sua ponte para uma nova história começa aqui.</Typography>
@@ -17,7 +16,7 @@ export default function HomeAdopter() {
                         mb: 4,
                         py: 3,
                         px: 2,
-                        backgroundColor: '#e5e8ee', // Um rosa bem clarinho de fundo
+                        backgroundColor: '#e5e8ee',
                         borderRadius: '12px',
                         borderLeft: '5px solid #528BDE',
                         textAlign: 'left'
@@ -55,7 +54,6 @@ export default function HomeAdopter() {
                         </Card>
                     </Grid>
 
-                    {/* Card: Receber Informação */}
                     <Grid xs={12} md={6}>
                         <Card variant="white" sx={{ height: '100%', cursor: 'pointer', '&:hover': { transform: 'scale(1.02)' }, transition: '0.3s' }}>
                             <AspectRatio ratio="2/1">
@@ -71,7 +69,6 @@ export default function HomeAdopter() {
                         </Card>
                     </Grid>
 
-                    {/* Card: Saúde e Histórico */}
                     <Grid xs={12} md={4}>
                         <Card variant="outlined">
                             <CardContent>

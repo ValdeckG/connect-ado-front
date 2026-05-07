@@ -14,7 +14,6 @@ import {
 import api from "../../services/api";
 
 export default function Login() {
-  // 1. Estado centralizado em um objeto
   const [state, setState] = useState({
     email: "",
     password: "",
@@ -23,7 +22,6 @@ export default function Login() {
 
   const navigate = useNavigate();
 
-  // Função genérica para atualizar qualquer chave do objeto state
   const updateState = (key, value) => {
     setState((prev) => ({
       ...prev,
@@ -31,7 +29,6 @@ export default function Login() {
     }));
   };
 
-  // 2. Função de envio
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -42,7 +39,7 @@ export default function Login() {
         password: state.password,
       });
 
-      console.log(response);
+
 
       console.log("Sucesso:", response.data);
       localStorage.setItem("token", response.data.data.access_token);
@@ -69,9 +66,7 @@ export default function Login() {
               <Input
                 type="email"
                 placeholder="seu@email.com"
-                // O valor vem do objeto state
                 value={state.email}
-                // Chamamos a updateState passando a chave 'email'
                 onChange={(e) => updateState("email", e.target.value)}
               />
             </FormControl>
@@ -81,9 +76,7 @@ export default function Login() {
               <Input
                 type="password"
                 placeholder="••••••••"
-                // O valor vem do objeto state
                 value={state.password}
-                // Chamamos a updateState passando a chave 'password'
                 onChange={(e) => updateState("password", e.target.value)}
               />
             </FormControl>

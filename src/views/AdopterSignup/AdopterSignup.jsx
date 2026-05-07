@@ -10,8 +10,8 @@ import {
     Stack,
     Typography,
     Grid,
-    Select, // Adicionado
-    Option  // Adicionado
+    Select, 
+    Option  
 } from "@mui/joy";
 
 export default function AdopterSignup() {
