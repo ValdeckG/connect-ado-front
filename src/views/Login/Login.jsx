@@ -40,7 +40,10 @@ export default function Login() {
 
       localStorage.setItem("token", response.data.data.access_token);
       localStorage.setItem("user", JSON.stringify(response.data.data.user));
-      navigate("/");
+
+      window.dispatchEvent(new Event("storage"));
+
+      navigate(`/${response.data.data.user.role.toLowerCase()}`);
     } catch (error) {
       const mensagemErro =
         error.response?.data?.message || "Erro ao conectar com o servidor";

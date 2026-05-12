@@ -7,7 +7,7 @@ export const ConnectRedirect = ({ children }) => {
   if (user && token) {
     if (user.role === "INSTITUTION") return <Navigate to="/institution" />;
     if (user.role === "ADOPTER") return <Navigate to="/adopter" />;
-    if (user.role === "CHILD") return <Navigate to="/children" />;
+    if (user.role === "CHILD") return <Navigate to="/child" />;
     return <Navigate to="/" />;
   }
 

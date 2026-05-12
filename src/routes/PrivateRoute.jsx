@@ -11,7 +11,7 @@ export const PrivateRoute = ({ allowedRoles }) => {
   if (!allowedRoles.includes(user.role)) {
     if (user.role === "INSTITUTION") return <Navigate to="/institution" />;
     if (user.role === "ADOPTER") return <Navigate to="/adopter" />;
-    if (user.role === "CHILD") return <Navigate to="/children" />;
+    if (user.role === "CHILD") return <Navigate to="/child" />;
     return <Navigate to="/" />;
   }
 
