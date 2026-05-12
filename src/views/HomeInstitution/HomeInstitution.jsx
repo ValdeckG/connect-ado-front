@@ -19,10 +19,12 @@ import {
 import "./style.css";
 import { ChildSignupModal } from "./modal/ChildSignupModal";
 import { MatchModal } from "./modal/MatchModal";
+import { LinkAdopterModal } from "./modal/LinkAdopterModal";
 
 export default function HomeInstitution() {
   const [openChildSignupModal, setOpenChildSignupModal] = useState(false);
   const [openMatchModal, setOpenMatchModal] = useState(false);
+  const [openLinkAdopterModal, setOpenLinkAdopterModal] = useState(false);
 
   return (
     <div className="home-container">
@@ -152,7 +154,11 @@ export default function HomeInstitution() {
                   <Typography level="body-sm">
                     Vincular um adotante a sua instituição.
                   </Typography>
-                  <Button variant="soft" sx={{ mt: 2 }}>
+                  <Button
+                    variant="soft"
+                    sx={{ mt: 2 }}
+                    onClick={() => setOpenLinkAdopterModal(true)}
+                  >
                     Iniciar Vínculo
                   </Button>
                 </CardContent>
@@ -166,6 +172,10 @@ export default function HomeInstitution() {
           setOpen={setOpenChildSignupModal}
         />
         <MatchModal open={openMatchModal} setOpen={setOpenMatchModal} />
+        <LinkAdopterModal
+          open={openLinkAdopterModal}
+          setOpen={setOpenLinkAdopterModal}
+        />
       </div>
     </div>
   );
