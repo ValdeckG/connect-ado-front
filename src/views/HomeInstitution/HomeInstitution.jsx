@@ -18,9 +18,11 @@ import {
 } from "lucide-react";
 import "./style.css";
 import { ChildSignupModal } from "./modal/ChildSignupModal";
+import { MatchModal } from "./modal/MatchModal";
 
 export default function HomeInstitution() {
-  const [open, setOpen] = useState(false);
+  const [openChildSignupModal, setOpenChildSignupModal] = useState(false);
+  const [openMatchModal, setOpenMatchModal] = useState(false);
 
   return (
     <div className="home-container">
@@ -36,7 +38,7 @@ export default function HomeInstitution() {
             startDecorator={<Plus />}
             size="lg"
             color="primary"
-            onClick={() => setOpen(true)}
+            onClick={() => setOpenChildSignupModal(true)}
           >
             Cadastrar Criança
           </Button>
@@ -129,7 +131,11 @@ export default function HomeInstitution() {
                   <Typography level="body-sm">
                     Vincular uma criança a uma família adotante cadastrada.
                   </Typography>
-                  <Button variant="soft" sx={{ mt: 2 }}>
+                  <Button
+                    variant="soft"
+                    sx={{ mt: 2 }}
+                    onClick={() => setOpenMatchModal(true)}
+                  >
                     Iniciar Processo
                   </Button>
                 </CardContent>
@@ -155,7 +161,11 @@ export default function HomeInstitution() {
           </Grid>
         </Grid>
 
-        <ChildSignupModal open={open} setOpen={setOpen} />
+        <ChildSignupModal
+          open={openChildSignupModal}
+          setOpen={setOpenChildSignupModal}
+        />
+        <MatchModal open={openMatchModal} setOpen={setOpenMatchModal} />
       </div>
     </div>
   );

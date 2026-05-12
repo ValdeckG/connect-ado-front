@@ -53,8 +53,7 @@ export default function AdopterSignup() {
     setLoading(true);
 
     try {
-      const response = await api.post("/adopter/signup", state);
-      console.log("Cadastro realizado:", response.data);
+      await api.post("/adopter/signup", state);
       alert("Conta criada com sucesso!");
       navigate("/login");
     } catch (error) {

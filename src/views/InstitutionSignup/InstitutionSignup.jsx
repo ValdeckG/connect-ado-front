@@ -52,8 +52,7 @@ export default function InstitutionSignup() {
     setLoading(true);
 
     try {
-      const response = await api.post("/institution/signup", state);
-      console.log("Cadastro realizado:", response.data);
+      await api.post("/institution/signup", state);
       alert("Instituição cadastrada com sucesso!");
       navigate("/institution");
     } catch (error) {

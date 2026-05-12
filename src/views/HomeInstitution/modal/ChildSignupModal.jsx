@@ -12,7 +12,7 @@ import {
   Grid,
   Select,
   Option,
-  ModalOverflow, // Importação necessária para o scroll
+  ModalOverflow,
 } from "@mui/joy";
 import { useState } from "react";
 import { maskCPF, onlyNumbers } from "../../../utils/masks";
