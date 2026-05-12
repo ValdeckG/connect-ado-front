@@ -1,6 +1,7 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Navbar from "../components/navbar/Navbar";
 import { ConnectRedirect } from "./ConnectRedirect";
+import { PrivateRoute } from "./PrivateRoute";
 
 // Public Routes
 
@@ -12,7 +13,7 @@ import Login from "../views/Login/Login";
 
 import HomeAdopter from "../views/HomeAdopter/HomeAdopter";
 import HomeInstitution from "../views/HomeInstitution/HomeInstitution";
-import { PrivateRoute } from "./PrivateRoute";
+import HomeChild from "../views/HomeChild/HomeChild";
 
 function IndexRoutes() {
   return (
@@ -52,7 +53,9 @@ function IndexRoutes() {
         <Route element={<PrivateRoute allowedRoles={["INSTITUTION"]} />}>
           <Route path="/institution" element={<HomeInstitution />} />
         </Route>
-        {/* <Route element={<PrivateRoute allowedRoles={["CHILD"]} />}></Route> */}
+        <Route element={<PrivateRoute allowedRoles={["CHILD"]} />}>
+          <Route path="/child" element={<HomeChild />} />
+        </Route>
       </Routes>
     </Router>
   );
