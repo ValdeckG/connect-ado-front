@@ -1,4 +1,3 @@
-/* Layout Base (Desktop) */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -9,7 +8,7 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .logo {
@@ -17,11 +16,10 @@
   display: block;
 }
 
-/* O container geral dos links e botões */
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 40px; /* Espaço entre os links e os botões */
+  gap: 40px;
 }
 
 .nav-items {
@@ -41,7 +39,7 @@
 }
 
 .nav-items a:hover {
-  color: #de318d;
+  color: #4a90e2;
 }
 
 .nav-auth {
@@ -63,7 +61,15 @@
   padding: 10px 25px;
   border-radius: 50px;
   background: linear-gradient(90deg, #de318d 0%, #4a90e2 100%);
-  transition: opacity 0.3s, transform 0.2s;
+  transition:
+    opacity 0.3s,
+    transform 0.2s;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  font-size: 0.95rem;
 }
 
 .btn-signup:hover {
@@ -71,7 +77,60 @@
   transform: translateY(-1px);
 }
 
-/* --- MENU HAMBÚRGUER (Escondido no Desktop) --- */
+.dropdown-container {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 120%;
+  right: 0;
+  background-color: white;
+  min-width: 190px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+  list-style: none;
+  padding: 8px 0;
+  display: none;
+  z-index: 1100;
+  overflow: hidden;
+  border: 1px solid #f0f0f0;
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 12px 20px;
+  color: #2d4a53;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #f8f9fa;
+  color: #4a90e2;
+}
+
+.arrow {
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  margin-left: 12px;
+  transform: rotate(45deg);
+  transition: transform 0.3s;
+}
+
+.arrow.up {
+  transform: rotate(-135deg);
+}
+
 .menu-icon {
   display: none;
   cursor: pointer;
@@ -87,23 +146,16 @@
   transition: all 0.3s ease-in-out;
 }
 
-/* --- RESPONSIVIDADE (Mobile & Tablets) --- */
 @media screen and (max-width: 968px) {
-  .navbar {
-    padding: 15px 20px;
-  }
-
-  /* Mostra o ícone de menu */
   .menu-icon {
     display: flex;
-    z-index: 1001; /* Fica acima do menu aberto */
+    z-index: 1001;
   }
 
-  /* Transforma o menu em um painel lateral/dropdown */
   .nav-menu {
     position: absolute;
-    top: 75px; /* Altura aproximada da navbar */
-    left: -100%; /* Esconde o menu fora da tela à esquerda */
+    top: 75px;
+    left: -100%;
     flex-direction: column;
     background-color: #ffffff;
     width: 100%;
@@ -113,26 +165,39 @@
     gap: 25px;
   }
 
-  /* Quando a classe 'active' for adicionada pelo React */
   .nav-menu.active {
     left: 0;
   }
 
-  .nav-items {
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    width: 100%;
-  }
-
+  .nav-items,
   .nav-auth {
     flex-direction: column;
-    align-items: center;
     width: 100%;
-    gap: 15px;
+    align-items: center;
   }
 
-  /* Animação das barras transformando em um "X" */
+  .dropdown-container {
+    width: 80%;
+  }
+
+  .btn-signup {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .dropdown-menu {
+    position: static;
+    width: 100%;
+    box-shadow: none;
+    background-color: #f9f9f9;
+    margin-top: 10px;
+    display: none;
+  }
+
+  .dropdown-menu.show {
+    display: block;
+  }
+
   .active-bar1 {
     transform: translateY(8px) rotate(45deg);
   }

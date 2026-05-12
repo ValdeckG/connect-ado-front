@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useState } from "react";
 import "./style.css";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -39,14 +38,12 @@ export default function Login() {
         password: state.password,
       });
 
-
-
       console.log("Sucesso:", response.data);
       localStorage.setItem("token", response.data.data.access_token);
       navigate("/");
-
     } catch (error) {
-      const mensagemErro = error.response?.data?.message || "Erro ao conectar com o servidor";
+      const mensagemErro =
+        error.response?.data?.message || "Erro ao conectar com o servidor";
       alert(mensagemErro);
       console.error("Erro no login:", error);
     } finally {
@@ -57,7 +54,9 @@ export default function Login() {
   return (
     <div className="container">
       <div className="signup">
-        <Typography level="h2" className="title">Entrar na Conta</Typography>
+        <Typography level="h2" className="title">
+          Entrar na Conta
+        </Typography>
 
         <form onSubmit={handleSubmit}>
           <Stack spacing={2.5}>
@@ -81,8 +80,10 @@ export default function Login() {
               />
             </FormControl>
 
-            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-              <Link to="/recuperar-senha" className="forgot-password">Esqueceu a senha?</Link>
+            <div style={{ display: "flex", justifyContent: "flex-end" }}>
+              <Link to="/recuperar-senha" className="forgot-password">
+                Esqueceu a senha?
+              </Link>
             </div>
 
             <Button
@@ -97,9 +98,11 @@ export default function Login() {
 
             <Divider sx={{ my: 1 }}>ou</Divider>
 
-            <Typography level="body-sm" sx={{ textAlign: 'center' }}>
+            <Typography level="body-sm" sx={{ textAlign: "center" }}>
               Ainda não tem uma conta?{" "}
-              <Link to="/signup" className="link-highlight">Criar conta gratuita</Link>
+              <Link to="/signup" className="link-highlight">
+                Criar conta gratuita
+              </Link>
             </Typography>
           </Stack>
         </form>

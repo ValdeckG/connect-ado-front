@@ -1,61 +1,33 @@
-
-import {
-    Navigate,
-    Route,
-    BrowserRouter as Router,
-    Routes
-} from 'react-router-dom'
-
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import Navbar from "../components/navbar/Navbar";
 
 // Public Routes
 
-import Navbar from '../components/navbar/Navbar'
-import InstitutionSignup from '../views/InstitutionSignup/InstitutionSignup'
-import AdopterSignup from '../views/AdopterSignup/AdopterSignup'
-import Login from '../views/Login/Login'
+import InstitutionSignup from "../views/InstitutionSignup/InstitutionSignup";
+import AdopterSignup from "../views/AdopterSignup/AdopterSignup";
+import Login from "../views/Login/Login";
 
 //Private Routes
 
-import HomeAdopter from '../views/HomeAdopter/HomeAdopter'
-import HomeInstitution from '../views/HomeInstitution/HomeInstitution'
+import HomeAdopter from "../views/HomeAdopter/HomeAdopter";
+import HomeInstitution from "../views/HomeInstitution/HomeInstitution";
 
 function IndexRoutes() {
+  return (
+    <Router>
+      <Navbar />
+      <Routes>
+        {/* // Public Routes */}
+        <Route path="/institution-signup" element={<InstitutionSignup />} />
+        <Route path="/adopter-signup" element={<AdopterSignup />} />
+        <Route path="/login" element={<Login />} />
 
-    return (
-       
-        <Router>
-            <Navbar/>
-            <Routes>
-
-
-                {/* //Public Routes */}
-                <Route
-                    path="/adopter"
-                    element={<HomeAdopter />}
-                />
-               
-                <Route
-                    path="/institution-signup"
-                    element={<InstitutionSignup />}
-                />
-                <Route
-                    path="/adopter-signup"
-                    element={<AdopterSignup />}
-                />
-                <Route
-                    path="/login"
-                    element={<Login />}
-                />
-                <Route
-                    path="/institution"
-                    element={<HomeInstitution />}
-                />
-
-
-
-            </Routes>
-        </Router>
-    )
+        {/* //Private Routes */}
+        <Route path="/adopter" element={<HomeAdopter />} />
+        <Route path="/institution" element={<HomeInstitution />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default IndexRoutes
+export default IndexRoutes;

@@ -1,7 +1,7 @@
 body {
   margin: 0;
   background-color: #f0f2f5;
-  font-family: 'Public Sans', 'Inter', sans-serif;
+  font-family: "Public Sans", "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -30,17 +30,18 @@ body {
   font-weight: 700 !important;
 }
 
-.joy-Input-root, .joy-Select-root {
+.joy-Input-root,
+.joy-Select-root {
   --Input-minHeight: 44px;
   --Select-minHeight: 44px;
   border-radius: 8px;
 }
 
-.joy-Input-root.joy-focused, .joy-Select-root.joy-focused {
+.joy-Input-root.joy-focused,
+.joy-Select-root.joy-focused {
   --Input-focusedThickness: 2px;
-  --Input-focusedHighlight: #de318d; 
+  --Input-focusedHighlight: #de318d;
 }
-
 
 .btn-submit {
   background: linear-gradient(90deg, #de318d 0%, #4a90e2 100%) !important;
@@ -48,7 +49,9 @@ body {
   border-radius: 50px !important;
   font-weight: 600 !important;
   border: none !important;
-  transition: opacity 0.3s, transform 0.2s !important;
+  transition:
+    opacity 0.3s,
+    transform 0.2s !important;
 }
 
 .btn-submit:hover {

@@ -1,7 +1,7 @@
 body {
   margin: 0;
   background-color: #f0f2f5;
-  font-family: 'Public Sans', sans-serif;
+  font-family: "Public Sans", sans-serif;
 }
 
 .container {
@@ -18,7 +18,7 @@ body {
   border-radius: 12px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
   width: 100%;
-  max-width: 600px; /* Um pouco mais largo para acomodar o Grid de 2 colunas */
+  max-width: 600px;
 }
 
 .title {
@@ -26,7 +26,6 @@ body {
   margin-bottom: 24px !important;
   color: #111;
 }
-
 
 .joy-Input-root {
   --Input-minHeight: 40px;

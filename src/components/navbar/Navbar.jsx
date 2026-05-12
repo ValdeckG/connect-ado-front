@@ -3,10 +3,18 @@ import { Link } from "react-router-dom";
 import "./style.css";
 
 const Navbar = () => {
-
   const [isOpen, setIsOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  const closeMenu = () => setIsOpen(false);
+  const closeMenu = () => {
+    setIsOpen(false);
+    setDropdownOpen(false);
+  };
+
+  const toggleDropdown = (e) => {
+    e.preventDefault();
+    setDropdownOpen(!dropdownOpen);
+  };
 
   return (
     <nav className="navbar">
@@ -24,17 +32,62 @@ const Navbar = () => {
 
       <div className={`nav-menu ${isOpen ? "active" : ""}`}>
         <ul className="nav-items">
-          <li><Link to="/" onClick={closeMenu}>Início</Link></li>
-          <li><Link to="/comunidade" onClick={closeMenu}>Comunidade</Link></li>
-          <li><Link to="/contato" onClick={closeMenu}>Contato</Link></li>
-          <li><Link to="/blog" onClick={closeMenu}>Blog</Link></li>
-          <li><Link to="/eventos" onClick={closeMenu}>Eventos</Link></li>
-          <li><Link to="/suporte" onClick={closeMenu}>Suporte</Link></li>
+          <li>
+            <Link to="/" onClick={closeMenu}>
+              Início
+            </Link>
+          </li>
+          <li>
+            <Link to="/comunidade" onClick={closeMenu}>
+              Comunidade
+            </Link>
+          </li>
+          <li>
+            <Link to="/contato" onClick={closeMenu}>
+              Contato
+            </Link>
+          </li>
+          <li>
+            <Link to="/blog" onClick={closeMenu}>
+              Blog
+            </Link>
+          </li>
+          <li>
+            <Link to="/eventos" onClick={closeMenu}>
+              Eventos
+            </Link>
+          </li>
+          <li>
+            <Link to="/suporte" onClick={closeMenu}>
+              Suporte
+            </Link>
+          </li>
         </ul>
 
         <div className="nav-auth">
-          <Link to="/login" className="btn-login" onClick={closeMenu}>Entrar</Link>
-          <Link to="/signup" className="btn-signup" onClick={closeMenu}>Criar Conta</Link>
+          <Link to="/login" className="btn-login" onClick={closeMenu}>
+            Entrar
+          </Link>
+
+          <div className="dropdown-container">
+            <button className="btn-signup" onClick={toggleDropdown}>
+              Criar Conta
+              <span className={`arrow ${dropdownOpen ? "up" : ""}`}></span>
+            </button>
+
+            <ul className={`dropdown-menu ${dropdownOpen ? "show" : ""}`}>
+              <li>
+                <Link to="/institution-signup" onClick={closeMenu}>
+                  Criar Instituição
+                </Link>
+              </li>
+              <li>
+                <Link to="/adopter-signup" onClick={closeMenu}>
+                  Criar Adotante
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </nav>
