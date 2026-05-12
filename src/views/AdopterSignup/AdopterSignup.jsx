@@ -51,8 +51,7 @@ export default function AdopterSignup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    console.log(state);
-    return;
+
     try {
       const response = await api.post("/adopter/signup", state);
       console.log("Cadastro realizado:", response.data);

@@ -38,14 +38,14 @@ export default function Login() {
         password: state.password,
       });
 
-      console.log("Sucesso:", response.data);
       localStorage.setItem("token", response.data.data.access_token);
+      localStorage.setItem("user", JSON.stringify(response.data.data.user));
       navigate("/");
     } catch (error) {
       const mensagemErro =
         error.response?.data?.message || "Erro ao conectar com o servidor";
       alert(mensagemErro);
-      console.error("Erro no login:", error);
+      console.error("Erro no login:", error.response.data.message);
     } finally {
       setLoading(false);
     }

@@ -1,5 +1,6 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Navbar from "../components/navbar/Navbar";
+import { ConnectRedirect } from "./ConnectRedirect";
 
 // Public Routes
 
@@ -11,6 +12,7 @@ import Login from "../views/Login/Login";
 
 import HomeAdopter from "../views/HomeAdopter/HomeAdopter";
 import HomeInstitution from "../views/HomeInstitution/HomeInstitution";
+import { PrivateRoute } from "./PrivateRoute";
 
 function IndexRoutes() {
   return (
@@ -18,13 +20,39 @@ function IndexRoutes() {
       <Navbar />
       <Routes>
         {/* // Public Routes */}
-        <Route path="/institution-signup" element={<InstitutionSignup />} />
-        <Route path="/adopter-signup" element={<AdopterSignup />} />
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/institution-signup"
+          element={
+            <ConnectRedirect>
+              <InstitutionSignup />
+            </ConnectRedirect>
+          }
+        />
+        <Route
+          path="/adopter-signup"
+          element={
+            <ConnectRedirect>
+              <AdopterSignup />
+            </ConnectRedirect>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <ConnectRedirect>
+              <Login />
+            </ConnectRedirect>
+          }
+        />
 
-        {/* //Private Routes */}
-        <Route path="/adopter" element={<HomeAdopter />} />
-        <Route path="/institution" element={<HomeInstitution />} />
+        {/* //Private Routes 'Roles'*/}
+        <Route element={<PrivateRoute allowedRoles={["ADOPTER"]} />}>
+          <Route path="/adopter" element={<HomeAdopter />} />
+        </Route>
+        <Route element={<PrivateRoute allowedRoles={["INSTITUTION"]} />}>
+          <Route path="/institution" element={<HomeInstitution />} />
+        </Route>
+        {/* <Route element={<PrivateRoute allowedRoles={["CHILD"]} />}></Route> */}
       </Routes>
     </Router>
   );
