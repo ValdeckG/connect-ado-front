@@ -6,7 +6,6 @@ import {
   CardContent,
   Button,
   Stack,
-  Chip,
   Divider,
 } from "@mui/joy";
 import {
@@ -15,13 +14,17 @@ import {
   HeartHandshake,
   BookOpen,
   Stethoscope,
+  ArrowRight,
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import "./style.css";
 import { ChildSignupModal } from "./modal/ChildSignupModal";
 import { MatchModal } from "./modal/MatchModal";
 import { LinkAdopterModal } from "./modal/LinkAdopterModal";
+import { Box } from "@mui/joy";
 
 export default function HomeInstitution() {
+  const navigate = useNavigate();
   const [openChildSignupModal, setOpenChildSignupModal] = useState(false);
   const [openMatchModal, setOpenMatchModal] = useState(false);
   const [openLinkAdopterModal, setOpenLinkAdopterModal] = useState(false);
@@ -47,81 +50,70 @@ export default function HomeInstitution() {
         </header>
 
         <Grid container spacing={3}>
-          <Grid xs={12} md={4}>
+          <Grid xs={12} md={6}>
             <Card variant="outlined">
               <CardContent>
                 <Typography level="title-md" startDecorator={<Stethoscope />}>
                   Saúde
                 </Typography>
                 <Typography level="body-xs">
-                  Atualize vacinas, laudos médicos e necessidades.
+                  Atualize vacinas, laudos médicos e necessidades específicas.
                 </Typography>
               </CardContent>
             </Card>
           </Grid>
 
-          <Grid xs={12} md={4}>
+          <Grid xs={12} md={6}>
             <Card variant="outlined">
               <CardContent>
                 <Typography level="title-md" startDecorator={<BookOpen />}>
                   Educação
                 </Typography>
                 <Typography level="body-xs">
-                  Notas escolares, frequência e histórico pedagógico.
+                  Notas escolares, frequência e histórico pedagógico dos
+                  acolhidos.
                 </Typography>
               </CardContent>
             </Card>
           </Grid>
 
-          <Grid xs={12} md={8}>
-            <Card variant="white">
+          <Grid xs={12} md={7}>
+            <Card variant="plain" sx={{ height: "100%", boxShadow: "sm" }}>
               <Typography level="title-lg" startDecorator={<Users />}>
-                Crianças Acolhidas
+                Crianças Acolhidas e Adotantes
               </Typography>
               <Typography level="body-sm">
-                Gerencie perfis, saúde e educação.
+                Acesse a listagem completa e gerencie os perfis que estão
+                vinculados a sua instituição.
               </Typography>
-              <Divider sx={{ my: 1.5 }} />
 
-              <Stack spacing={2}>
-                {[
-                  {
-                    nome: "João Silva",
-                    idade: "8 anos",
-                    status: "Em Harmonização",
-                    cor: "warning",
-                  },
-                  {
-                    nome: "Ana Souza",
-                    idade: "5 anos",
-                    status: "Aguardando Match",
-                    cor: "neutral",
-                  },
-                ].map((item, index) => (
-                  <Stack
-                    key={index}
-                    direction="row"
-                    justifyContent="space-between"
-                    alignItems="center"
-                  >
-                    <div>
-                      <Typography level="title-sm">{item.nome}</Typography>
-                      <Typography level="body-xs">{item.idade}</Typography>
-                    </div>
-                    <Chip variant="soft" color={item.cor} size="sm">
-                      {item.status}
-                    </Chip>
-                    <Button variant="ghost" size="sm">
-                      Editar Perfil
-                    </Button>
-                  </Stack>
-                ))}
-              </Stack>
+              <Divider sx={{ my: 2 }} />
+
+              <Box
+                sx={{
+                  display: "flex",
+                  flexGrow: 1,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  py: 4,
+                }}
+              >
+                <Button
+                  variant="soft"
+                  color="primary"
+                  size="lg"
+                  endDecorator={<ArrowRight />}
+                  onClick={() => navigate("/child-adopter-list")}
+                  sx={{ borderRadius: "md" }}
+                >
+                  Ver Lista de Crianças e Adotantes
+                </Button>
+              </Box>
             </Card>
           </Grid>
 
-          <Grid xs={12} md={4}>
-            <Stack spacing={3}>
+          <Grid xs={12} md={5}>
+            <Stack spacing={2}>
               <Card variant="solid" color="primary" invertedColors>
                 <CardContent>
                   <Typography
@@ -152,7 +144,7 @@ export default function HomeInstitution() {
                     Vincular Adotante
                   </Typography>
                   <Typography level="body-sm">
-                    Vincular um adotante a sua instituição.
+                    Cadastrar e vincular um novo adotante à sua instituição.
                   </Typography>
                   <Button
                     variant="soft"

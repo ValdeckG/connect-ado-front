@@ -16,6 +16,7 @@ import HomeAdopter from "../views/HomeAdopter/HomeAdopter";
 import HomeInstitution from "../views/HomeInstitution/HomeInstitution";
 import HomeChild from "../views/HomeChild/HomeChild";
 import { Footer } from "../components/Footer/Footer";
+import ChildAdopterList from "../views/ChildAdopterList/ChildAdopterList";
 
 function IndexRoutes() {
   return (
@@ -55,6 +56,7 @@ function IndexRoutes() {
         </Route>
         <Route element={<PrivateRoute allowedRoles={["INSTITUTION"]} />}>
           <Route path="/institution" element={<HomeInstitution />} />
+          <Route path="/child-adopter-list" element={<ChildAdopterList />} />
         </Route>
         <Route element={<PrivateRoute allowedRoles={["CHILD"]} />}>
           <Route path="/child" element={<HomeChild />} />
