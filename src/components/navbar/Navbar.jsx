@@ -54,11 +54,17 @@ const Navbar = () => {
 
       <div className={`nav-menu ${isOpen ? "active" : ""}`}>
         <ul className="nav-items">
-          {isLogged && <li>
+          <li>
             <Link to="/" onClick={closeMenu}>
               Início
             </Link>
-          </li>}
+          </li>
+
+          <li>
+            <Link to="/faq" onClick={closeMenu}>
+              FAQ
+            </Link>
+          </li>
         </ul>
 
         <div className="nav-auth">

@@ -17,6 +17,7 @@ import HomeInstitution from "../views/HomeInstitution/HomeInstitution";
 import HomeChild from "../views/HomeChild/HomeChild";
 import { Footer } from "../components/Footer/Footer";
 import ChildAdopterList from "../views/ChildAdopterList/ChildAdopterList";
+import { FAQ } from "../views/FAQ/FAQ";
 
 function IndexRoutes() {
   return (
@@ -56,6 +57,7 @@ function IndexRoutes() {
             </ConnectRedirect>
           }
         />
+        <Route path="/faq" element={<FAQ />} />
 
         {/* //Private Routes 'Roles'*/}
         <Route element={<PrivateRoute allowedRoles={["ADOPTER"]} />}>

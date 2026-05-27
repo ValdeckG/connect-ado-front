@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect, useCallback, useRef } from "react";
 import {
   Typography,
@@ -36,7 +37,6 @@ export default function ChildAdopterList() {
     useState(false);
   const [childModal, setChildModal] = useState({});
 
-  // Estados de Dados e Paginação
   const [children, setChildren] = useState([]);
   const [adopters, setAdopters] = useState([]);
   const [page, setPage] = useState(1);

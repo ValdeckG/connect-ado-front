@@ -19,6 +19,7 @@ import {
   ChevronRight,
   Sparkles,
   Check,
+  HelpCircle, // Importado para o ícone do bloco de FAQ
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -66,7 +67,7 @@ export default function LandingPage() {
             }}
           >
             O <strong>connectAdo</strong> facilita a troca de informações e
-            rotinas entre instituições, adotantes e crianças, tornando o
+            rotinas entre instituições, adotantes and crianças, tornando o
             processo de adoção mais humano e transparente.
           </Typography>
           <Stack
@@ -260,6 +261,50 @@ export default function LandingPage() {
               </AspectRatio>
             </Grid>
           </Grid>
+        </Container>
+      </Box>
+
+      <Box
+        sx={{
+          bgcolor: "background.surface",
+          py: 8,
+          borderBottom: "1px solid",
+          borderColor: "divider",
+        }}
+      >
+        <Container maxWidth="sm" sx={{ textAlign: "center" }}>
+          <Stack spacing={2} alignItems="center">
+            <Box
+              sx={{
+                p: 1.5,
+                borderRadius: "full",
+                display: "inline-flex",
+              }}
+            >
+              <HelpCircle size={28} className="btn-submit" />
+            </Box>
+            <Typography level="h3" sx={{ fontWeight: 700 }}>
+              Ficou com alguma dúvida?
+            </Typography>
+            <Typography
+              level="body-md"
+              sx={{ color: "text.secondary", maxW: "450px", mx: "auto", mb: 1 }}
+            >
+              Preparamos uma central completa com perguntas frequentes sobre o
+              connectAdo, o estágio de convivência e a transição do acolhido
+              para o novo lar.
+            </Typography>
+            <Button
+              variant="outlined"
+              color="primary"
+              size="md"
+              onClick={() => navigate("/faq")}
+              endDecorator={<ChevronRight size={18} />}
+              sx={{ borderRadius: "md", px: 3 }}
+            >
+              Acessar nossa Central de FAQ
+            </Button>
+          </Stack>
         </Container>
       </Box>
 

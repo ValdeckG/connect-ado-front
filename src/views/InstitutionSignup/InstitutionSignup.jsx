@@ -78,7 +78,7 @@ export default function InstitutionSignup() {
                 <FormControl required>
                   <FormLabel>Nome da instituição</FormLabel>
                   <Input
-                    placeholder="Ex: Hospital Central"
+                    placeholder="Ex: Instituição Nosso Lar"
                     value={state.name}
                     onChange={(e) => updateState("name", e.target.value)}
                   />

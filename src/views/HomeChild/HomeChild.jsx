@@ -195,7 +195,6 @@ export default function HomeChild() {
           </Grid>
         </Grid>
 
-        {/* Modal */}
         <ChildPersonalManualModal
           open={openPersonalManualModal}
           setOpen={setOpenPersonalManualModal}
