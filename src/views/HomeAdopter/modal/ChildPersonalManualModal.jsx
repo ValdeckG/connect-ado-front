@@ -187,7 +187,7 @@ export function ChildPersonalManualModal({ open, setOpen, adopterId }) {
                   readOnly
                   variant="soft"
                   value={
-                    state.child.health_record ||
+                    state.child?.health_record ||
                     "Nenhuma informação médica cadastrada"
                   }
                 />
@@ -199,7 +199,7 @@ export function ChildPersonalManualModal({ open, setOpen, adopterId }) {
                   readOnly
                   variant="soft"
                   value={
-                    state.child.education_level ||
+                    state.child?.education_level ||
                     "Nenhuma informação escolar cadastrada"
                   }
                 />
