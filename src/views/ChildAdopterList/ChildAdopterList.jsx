@@ -101,6 +101,58 @@ export default function ChildAdopterList() {
     };
   }, [search, index]);
 
+  const handleUnlinkAdopterChild = async (targetChildId) => {
+    const confirmAction = window.confirm(
+      "Tem certeza que deseja desfazer o vínculo desta criança com o adotante?",
+    );
+    if (!confirmAction) return;
+
+    try {
+      await api.patch(`/institution/unlink-adopter-child/${targetChildId}`);
+
+      setChildren((prev) =>
+        prev.map((c) =>
+          c.id === targetChildId ? { ...c, adopter_id: null } : c,
+        ),
+      );
+
+      setAdopters((prev) =>
+        prev.map((a) => {
+          if (a.childProfile[0]?.id === targetChildId) {
+            return { ...a, childProfile: [] };
+          }
+          return a;
+        }),
+      );
+
+      alert("Vínculo desfeito com sucesso!");
+    } catch (err) {
+      console.error(err);
+      alert("Erro ao desfazer o vínculo.");
+    }
+  };
+
+  const handleUnlinkAdopterInstitution = async (targetAdopterId) => {
+    const confirmAction = window.confirm(
+      "Tem certeza que deseja desvincular este adotante da instituição? Todos os vínculos ativos com crianças também serão rompidos.",
+    );
+    if (!confirmAction) return;
+
+    try {
+      await api.patch(
+        `/institution/unlink-adopter-institution/${targetAdopterId}`,
+      );
+
+      setAdopters((prev) => prev.filter((a) => a.id !== targetAdopterId));
+      fetchData(false);
+
+      alert("Adotante desvinculado com sucesso!");
+    } catch (err) {
+      console.error(err);
+      alert("Erro ao desvincular o adotante da instituição.");
+    }
+  };
+
   return (
     <>
       <div className="home-container">
@@ -221,9 +273,11 @@ export default function ChildAdopterList() {
                               size="sm"
                               variant="soft"
                               color="danger"
+                              disabled={!child.adopter_id}
                               startDecorator={<UserMinus size={16} />}
+                              onClick={() => handleUnlinkAdopterChild(child.id)}
                             >
-                              Desfazer
+                              Adotante
                             </Button>
                           </Stack>
                         </td>
@@ -298,6 +352,12 @@ export default function ChildAdopterList() {
                               color="warning"
                               disabled={!adopter.childProfile[0]}
                               startDecorator={<UserMinus size={16} />}
+                              onClick={() => {
+                                handleUnlinkAdopterChild(
+                                  adopter.childProfile[0]?.id,
+                                );
+                                console.log(adopter.childProfile[0]?.id);
+                              }}
                             >
                               Criança
                             </Button>
@@ -306,6 +366,9 @@ export default function ChildAdopterList() {
                               variant="soft"
                               color="danger"
                               startDecorator={<Building2 size={16} />}
+                              onClick={() =>
+                                handleUnlinkAdopterInstitution(adopter.id)
+                              }
                             >
                               Instituição
                             </Button>
