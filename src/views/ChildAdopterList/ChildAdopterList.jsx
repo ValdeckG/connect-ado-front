@@ -356,7 +356,6 @@ export default function ChildAdopterList() {
                                 handleUnlinkAdopterChild(
                                   adopter.childProfile[0]?.id,
                                 );
-                                console.log(adopter.childProfile[0]?.id);
                               }}
                             >
                               Criança

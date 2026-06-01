@@ -35,7 +35,6 @@ export function ChildPersonalManualModal({ open, setOpen, adopterId }) {
       setLoading(true);
       try {
         const response = await api.get(`/child/personal-manual`);
-        console.log(response);
 
         setState((prev) => ({ ...prev, ...response.data.data }));
       } catch (error) {
