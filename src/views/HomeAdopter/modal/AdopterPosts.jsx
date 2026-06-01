@@ -136,21 +136,28 @@ export function AdopterPostsModal({ open, setOpen }) {
                       {post.photo_url && (
                         <AspectRatio
                           ratio="16/9"
-                          sx={{ borderRadius: "xs", mb: 1.5, maxHeight: 350 }}
+                          sx={{
+                            borderRadius: "md",
+                            mb: 2,
+                            width: "100%",
+                            overflow: "hidden",
+                          }}
                         >
                           <img
                             src={post.photo_url}
                             loading="lazy"
                             alt={post.title}
-                            style={{ objectFit: "cover" }}
+                            style={{ objectFit: "cover", display: "block" }}
                           />
                         </AspectRatio>
                       )}
 
-                      <Typography level="body-sm" sx={{ mb: 2 }}>
+                      <Typography
+                        level="body-md"
+                        sx={{ mb: 2, whiteSpace: "pre-line" }}
+                      >
                         {post.content}
                       </Typography>
-
                       <Divider />
 
                       <Stack

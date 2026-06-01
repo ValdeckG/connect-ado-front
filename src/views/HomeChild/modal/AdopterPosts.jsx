@@ -33,6 +33,12 @@ export function AdopterPostsModal({ open, setOpen }) {
     }
   }, []);
 
+  const toggleLike = async (postId) => {
+    await api.patch(`/posts/${postId}/like`);
+
+    fetchPosts();
+  };
+
   useEffect(() => {
     if (open) {
       (async () => {
@@ -105,7 +111,12 @@ export function AdopterPostsModal({ open, setOpen }) {
                       {post.photo_url && (
                         <AspectRatio
                           ratio="16/9"
-                          sx={{ borderRadius: "xs", mb: 1.5, maxHeight: 350 }}
+                          sx={{
+                            borderRadius: "md",
+                            mb: 2,
+                            width: "100%",
+                            overflow: "hidden",
+                          }}
                         >
                           <img
                             src={post.photo_url}
@@ -116,7 +127,7 @@ export function AdopterPostsModal({ open, setOpen }) {
                         </AspectRatio>
                       )}
 
-                      <Typography level="body-sm" sx={{ mb: 2 }}>
+                      <Typography level="body-md" sx={{ mb: 2 }}>
                         {post.content}
                       </Typography>
 
@@ -129,7 +140,12 @@ export function AdopterPostsModal({ open, setOpen }) {
                         spacing={1}
                         sx={{ mt: 1 }}
                       >
-                        <IconButton variant="plain" color="danger" size="sm">
+                        <IconButton
+                          variant="plain"
+                          color="danger"
+                          size="sm"
+                          onClick={() => toggleLike(post.id)}
+                        >
                           <Heart
                             size={30}
                             fill={post.isLiked ? "currentColor" : "none"}
