@@ -35,6 +35,8 @@ export function ChildPersonalManualModal({ open, setOpen, adopterId }) {
       setLoading(true);
       try {
         const response = await api.get(`/child/personal-manual`);
+        console.log(response);
+
         setState((prev) => ({ ...prev, ...response.data.data }));
       } catch (error) {
         console.error("Erro ao buscar o manual do acolhido:", error);
@@ -176,6 +178,30 @@ export function ChildPersonalManualModal({ open, setOpen, adopterId }) {
                   readOnly
                   variant="soft"
                   value={state.notes || "Nenhuma observação cadastrada"}
+                />
+              </FormControl>
+              <FormControl>
+                <FormLabel>Informações Médicas</FormLabel>
+                <Textarea
+                  minRows={3}
+                  readOnly
+                  variant="soft"
+                  value={
+                    state.child.health_record ||
+                    "Nenhuma informação médica cadastrada"
+                  }
+                />
+              </FormControl>
+              <FormControl>
+                <FormLabel>Informações Escolares</FormLabel>
+                <Textarea
+                  minRows={3}
+                  readOnly
+                  variant="soft"
+                  value={
+                    state.child.education_level ||
+                    "Nenhuma informação escolar cadastrada"
+                  }
                 />
               </FormControl>
 

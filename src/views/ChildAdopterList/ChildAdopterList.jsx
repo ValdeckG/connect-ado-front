@@ -215,7 +215,7 @@ export default function ChildAdopterList() {
                                 setOpenHealthEducationModal(true);
                               }}
                             >
-                              Editar
+                              Laudos
                             </Button>
                             <Button
                               size="sm"
