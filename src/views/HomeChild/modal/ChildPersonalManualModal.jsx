@@ -3,7 +3,6 @@ import {
   Divider,
   FormControl,
   FormLabel,
-  Input,
   Modal,
   ModalClose,
   ModalDialog,
@@ -63,7 +62,6 @@ export function ChildPersonalManualModal({ open, setOpen, childId }) {
         child_id: childId,
       });
       alert("Manual pessoal cadastrado com sucesso!");
-      setOpen(false);
     } catch (error) {
       console.error("Erro no cadastro do manual:", error.response?.data);
       const msg =
@@ -107,7 +105,8 @@ export function ChildPersonalManualModal({ open, setOpen, childId }) {
                 <Grid xs={12} md={6}>
                   <FormControl>
                     <FormLabel>Comida Favorita</FormLabel>
-                    <Input
+                    <Textarea
+                      minRows={2}
                       placeholder="Ex: Arroz, feijão e batata frita"
                       value={state.favorite_food || ""}
                       onChange={(e) =>
@@ -119,7 +118,8 @@ export function ChildPersonalManualModal({ open, setOpen, childId }) {
                 <Grid xs={12} md={6}>
                   <FormControl>
                     <FormLabel>Música Favorita</FormLabel>
-                    <Input
+                    <Textarea
+                      minRows={2}
                       placeholder="Gênero ou música específica"
                       value={state.favorite_music || ""}
                       onChange={(e) =>
@@ -134,7 +134,8 @@ export function ChildPersonalManualModal({ open, setOpen, childId }) {
                 <Grid xs={12} md={6}>
                   <FormControl>
                     <FormLabel>Atividade Favorita</FormLabel>
-                    <Input
+                    <Textarea
+                      minRows={2}
                       placeholder="Ex: Desenhar, jogar bola"
                       value={state.favorite_activity || ""}
                       onChange={(e) =>
@@ -146,7 +147,8 @@ export function ChildPersonalManualModal({ open, setOpen, childId }) {
                 <Grid xs={12} md={6}>
                   <FormControl>
                     <FormLabel>Hobbies</FormLabel>
-                    <Input
+                    <Textarea
+                      minRows={2}
                       placeholder="O que gosta de fazer no tempo livre"
                       value={state.hobbies || ""}
                       onChange={(e) => updateState("hobbies", e.target.value)}
@@ -159,7 +161,8 @@ export function ChildPersonalManualModal({ open, setOpen, childId }) {
                 <Grid xs={12} md={6}>
                   <FormControl>
                     <FormLabel>Hábitos de Estudo</FormLabel>
-                    <Input
+                    <Textarea
+                      minRows={2}
                       placeholder="Como prefere estudar?"
                       value={state.study_habits || ""}
                       onChange={(e) =>
@@ -171,7 +174,8 @@ export function ChildPersonalManualModal({ open, setOpen, childId }) {
                 <Grid xs={12} md={6}>
                   <FormControl>
                     <FormLabel>Medos</FormLabel>
-                    <Input
+                    <Textarea
+                      minRows={2}
                       placeholder="Ex: Escuro, trovoadas"
                       value={state.fears || ""}
                       onChange={(e) => updateState("fears", e.target.value)}
