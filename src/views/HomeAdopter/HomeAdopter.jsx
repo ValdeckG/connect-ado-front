@@ -10,9 +10,12 @@ import {
 import { Camera, Heart, BookOpen, MessageSquare } from "lucide-react";
 import { AdopterPostsModal } from "./modal/AdopterPosts";
 import { useState } from "react";
+import { ChildPersonalManualModal } from "./modal/ChildPersonalManualModal";
 
 export default function HomeAdopter() {
   const [openAdopterPostsModal, setOpenAdopterPostsModal] = useState(false);
+  const [openChildPersonalManualModal, setOpenChildPersonalManualModal] =
+    useState(false);
   return (
     <div
       className="container"
@@ -122,7 +125,12 @@ export default function HomeAdopter() {
                   Descubra o que a criança gosta de comer, seus medos e as
                   músicas favoritas para dormir.
                 </Typography>
-                <Button variant="plain" endDecorator="→" sx={{ mt: 2, p: 0 }}>
+                <Button
+                  variant="plain"
+                  endDecorator="→"
+                  sx={{ mt: 2, p: 0 }}
+                  onClick={() => setOpenChildPersonalManualModal(true)}
+                >
                   Ler Manual
                 </Button>
               </CardContent>
@@ -161,6 +169,10 @@ export default function HomeAdopter() {
       <AdopterPostsModal
         open={openAdopterPostsModal}
         setOpen={setOpenAdopterPostsModal}
+      />
+      <ChildPersonalManualModal
+        open={openChildPersonalManualModal}
+        setOpen={setOpenChildPersonalManualModal}
       />
     </div>
   );
