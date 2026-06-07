@@ -27,7 +27,7 @@ export default function HomeAdopter() {
       >
         <header style={{ marginBottom: "32px" }}>
           <Typography level="h2">
-            Olá, Sua ponte para uma nova história começa aqui!
+            Olá, sua ponte para uma nova história começa aqui!
           </Typography>
         </header>
 

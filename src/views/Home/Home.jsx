@@ -67,7 +67,7 @@ export default function LandingPage() {
             }}
           >
             O <strong>ConnectAdo</strong> facilita a troca de informações e
-            rotinas entre instituições, adotantes and crianças, tornando o
+            rotinas entre instituições, adotantes e crianças, tornando o
             processo de adoção mais humano e transparente.
           </Typography>
           <Stack
